@@ -1,0 +1,55 @@
+[package]
+name = "fastcsv"
+version = "1.0.0"
+authors = ["Silen Locatelli"]
+edition = "2021"
+repository = "https://github.com/SilenLoc/playground-rust"
+readme = "README.md"
+license = "MIT"
+keywords = ["cli", "starter"]
+description = """
+Rust Playground.
+"""
+
+[workspace]
+
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4.17"
+
+[dev-dependencies]
+assert_cmd = "1.0.1"
+predicates = "1.0.5"
+
+[profile.dev]
+opt-level=0
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+codegen-units = 4
+
+[profile.release]
+opt-level=3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+
+[profile.test]
+opt-level = 1
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+codegen-units = 4
+
+[profile.bench]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
