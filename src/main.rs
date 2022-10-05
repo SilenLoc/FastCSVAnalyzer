@@ -1,6 +1,5 @@
 extern crate core;
 
-use std::io::Split;
 
 use log::info;
 
@@ -14,23 +13,30 @@ mod reader;
 
 fn main() {
     init();
-    analyze(|str| my_predicate(str))
+    analyze(|str| my_check_action(str), |string| my_out(string))
 }
 
-fn analyze(predicate: impl Fn(&&str) -> bool) {
+fn analyze(predicate: impl Fn(String) -> (bool, String), handle_action: impl Fn(String) -> ()) {
     if let Ok(lines) = read_lines(String::from("src/resources/x.csv")) {
         for line in lines {
             if let Ok(line) = line {
-                let values = line.split(';');
-
-                let x: Vec<&str> = values.into_iter().filter(|value| predicate(value)).collect();
-
-                info!("{}", x.join(";"))
+                let (is_predicate, tested_line) = predicate(line);
+                if is_predicate {
+                    handle_action(tested_line.clone())
+                }
             }
         }
     }
 }
 
-fn my_predicate(string: &&str) -> bool {
-    string.contains("someValue")
+fn my_check_action(string: String) -> (bool, String) {
+    let split = string.split(";");
+    let as_string_vec: Vec<&str> = split.into_iter().collect();
+    (as_string_vec.contains(&"someValue"), string)
 }
+
+fn my_out(string: String) -> () {
+    info!("{}", string);
+}
+
+
