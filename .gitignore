@@ -4,3 +4,9 @@ Cargo.lock
 .cache
 custom_config.toml
 .DS_Store
+/.idea/.gitignore
+/.idea/FastCsvAnalyzer.iml
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/rust-playground.iml
+/.idea/vcs.xml
