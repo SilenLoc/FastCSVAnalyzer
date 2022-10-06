@@ -17,5 +17,5 @@ This is a [Rust CLI](https://rust-starter.github.io) template configured for eph
 
 Click the button below to start a new development environment:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/template-rust-cli)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/SilenLoc/FastCSVAnalyzer)
 
