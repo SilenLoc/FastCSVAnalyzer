@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "main",
+            "cargoArgs": ["run","fastcsv"]
+        },
+
+    ]
+}
