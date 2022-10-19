@@ -12,8 +12,8 @@ pub fn analyze<T: Predicate>(
     if let Ok(lines) = in_action() {
         for line in lines.into_iter() {
             if let Ok(line) = line {
-                let (is_predicate, tested_line) = predicate.predicate(line);
-                if is_predicate {
+                let (predicate_true, tested_line) = predicate.check(line);
+                if predicate_true {
                     handle_action(tested_line.clone())
                 }
             }
