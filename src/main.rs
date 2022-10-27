@@ -1,6 +1,6 @@
 extern crate core;
 
-use matcher::All;
+use matcher::Matchers::All;
 
 use crate::analyze::analyze;
 use crate::init::init;

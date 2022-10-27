@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::Result;
 use std::io::{BufReader, Lines};
 
-use crate::matcher::Matcher;
+use crate::matcher::Matchers::Matcher;
 use crate::predicates::Predicate;
 
 pub fn analyze<T: Predicate, M: Matcher>(
