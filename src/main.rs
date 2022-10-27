@@ -1,5 +1,7 @@
 extern crate core;
 
+use matcher::All;
+
 use crate::analyze::analyze;
 use crate::init::init;
 use crate::logging::init_logger;
@@ -13,6 +15,7 @@ mod logging;
 mod outs;
 mod predicates;
 mod reader;
+mod matcher;
 
 fn main() {
     init();
@@ -25,5 +28,7 @@ fn main() {
         delimeter: ';'
     };
 
-    analyze(predicate_and_value, handle_action, in_action);
+    let all = All;
+
+    analyze(predicate_and_value,all, handle_action, in_action);
 }
