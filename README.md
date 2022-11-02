@@ -9,3 +9,9 @@ Click the button below to start a new development environment:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/SilenLoc/FastCSVAnalyzer)
 
+---
+
+Fast CSV Analyzer is a project that aims to create applications around the ideas:
+
+- analyze big csv files fast
+- view big csv files without loading everything into memory
