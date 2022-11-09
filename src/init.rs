@@ -1,5 +1,8 @@
-use crate::init_logger;
+use crate::{init_logger, analyze};
+
+
 use log::info;
+
 
 pub fn init() {
     init_logger().expect("could not init logger");

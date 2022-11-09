@@ -1,13 +1,9 @@
 extern crate core;
 
-use matcher::Matchers::All;
-
-use crate::analyze::analyze;
+use endpoints::analyze_csv;
 use crate::init::init;
 use crate::logging::init_logger;
-use crate::outs::my_out;
-use crate::predicates::ContainsValues;
-use crate::reader::read_lines;
+use actix_web::{HttpServer, App};
 
 mod analyze;
 mod init;
@@ -16,19 +12,21 @@ mod outs;
 mod predicates;
 mod reader;
 mod matcher;
+mod endpoints;
+mod csv_anaylzer;
 
-fn main() {
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
     init();
-
-    let handle_action = |string| my_out(string);
-    let in_action = || read_lines(String::from("src/resources/x.csv"));
-
-    let predicate_and_value = ContainsValues {
-        values: vec!["someValue".to_string(), "someOther".to_string()],
-        delimeter: ';'
-    };
-
-    let all = All;
-
-    analyze(predicate_and_value,all, handle_action, in_action);
+   
+    HttpServer::new(|| {
+        App::new()
+            .service(analyze_csv)
+    })
+    .bind(("127.0.0.1", 8080))?
+    .run()
+    .await
 }
+
+
