@@ -1,8 +1,7 @@
 use crate::{outs::my_out, predicates::ContainsValues, matcher::Matchers::All, reader::read_lines, analyze::analyze, };
 
 
-
-pub fn testCsvAnalyze(){
+pub fn test_csv_analyze(){
     let handle_action = |string| my_out(string);
     let in_action = || read_lines(String::from("src/resources/x.csv"));
 
